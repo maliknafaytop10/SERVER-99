@@ -1,10 +1,4 @@
-/* ==========================================
-   NAFAY SERVERS — CORE FUNCTIONALITY & STATE
-   ========================================== */
-
 document.addEventListener('DOMContentLoaded', () => {
-    
-    // State Object & Persistent Storage
     let state = {
         xp: 0,
         score: 0,
@@ -36,7 +30,6 @@ document.addEventListener('DOMContentLoaded', () => {
         localStorage.setItem('nafay_servers_state', JSON.stringify(state));
     }
 
-    // Navigation Flow
     const navItems = document.querySelectorAll('.nav-item');
     const sections = {
         'home-section': document.getElementById('home-section'),
@@ -68,7 +61,6 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // Profile Management
     const profileStatusBox = document.getElementById('profile-status-box');
     const profileDetailsBox = document.getElementById('profile-details-box');
     const createProfileBtn = document.getElementById('create-profile-btn');
@@ -104,7 +96,6 @@ document.addEventListener('DOMContentLoaded', () => {
         updateProfileView();
     });
 
-    // Settings Panel
     const settingsBtn = document.getElementById('settings-btn');
     const settingsPanel = document.getElementById('settings-panel');
     const settingsOverlay = document.getElementById('settings-overlay');
@@ -125,7 +116,6 @@ document.addEventListener('DOMContentLoaded', () => {
     closeSettings.addEventListener('click', () => toggleSettings(false));
     settingsOverlay.addEventListener('click', () => toggleSettings(false));
 
-    // Setting Controls
     const settingTheme = document.getElementById('setting-theme');
     const settingBrightness = document.getElementById('setting-brightness');
     const settingFps = document.getElementById('setting-fps');
@@ -176,7 +166,6 @@ document.addEventListener('DOMContentLoaded', () => {
         location.reload();
     });
 
-    // Game Engine States
     const playTriggers = document.querySelectorAll('.play-trigger');
     const backToHome = document.getElementById('back-to-home');
     const categoryContainer = document.getElementById('category-container');
@@ -226,7 +215,6 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    // Category Buttons for FO4R CHANCE
     document.querySelectorAll('.cat-btn').forEach(btn => {
         btn.addEventListener('click', () => {
             const cat = btn.getAttribute('data-cat');
@@ -280,14 +268,12 @@ document.addEventListener('DOMContentLoaded', () => {
         options.forEach(o => o.style.pointerEvents = 'none');
 
         if (currentGameMode === 'choose-your') {
-            // Choice based - always correct
             btnElement.classList.add('correct');
             state.score += 10;
             state.xp += 15;
             state.streak++;
             setAIMotivation('Great choice! Every preference makes your profile unique.');
         } else {
-            // MCQ mode
             if (selectedIndex === correctIndex) {
                 btnElement.classList.add('correct');
                 state.score += 20;
@@ -348,7 +334,6 @@ document.addEventListener('DOMContentLoaded', () => {
         document.getElementById('lives-count').textContent = state.lives;
     }
 
-    // Spinner Wheel Implementation
     function setupSpinnerWheel() {
         const wheel = document.getElementById('wheel');
         const spinBtn = document.getElementById('spin-btn');
