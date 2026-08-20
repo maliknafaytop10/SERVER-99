@@ -20,7 +20,7 @@
     </div>
 
     <!-- MAIN WEBSITE CONTAINER -->
-    <div id="main-website" class="main-website hidden">
+    <div id="main-website" class="main-website">
         
         <!-- HEADER / NAVIGATION -->
         <header class="navbar">
@@ -133,9 +133,7 @@
                         <div id="quiz-progress-bar" class="progress-bar"></div>
                     </div>
                     <h3 id="question-text" class="question-text">Question goes here...</h3>
-                    <div id="options-grid" class="options-grid">
-                        <!-- Options generated dynamically -->
-                    </div>
+                    <div id="options-grid" class="options-grid"></div>
                     <div class="quiz-footer-actions">
                         <button id="hint-btn" class="secondary-btn">💡 Use Hint (<span id="hint-count">3</span>)</button>
                     </div>
@@ -146,9 +144,7 @@
                     <h3 id="spinner-prompt">TUM KIA BANO GA?</h3>
                     <div class="wheel-container">
                         <div class="wheel-pointer"></div>
-                        <div id="wheel" class="wheel">
-                            <!-- Wheel segments rendered via JS -->
-                        </div>
+                        <div id="wheel" class="wheel"></div>
                     </div>
                     <button id="spin-btn" class="primary-btn spin-action-btn">SPIN WHEEL</button>
                     <div id="spin-result" class="spin-result-popup hidden"></div>
