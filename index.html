@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NAFAY SERVERS — Powered by DeepX</title>
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600;800&family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- OPENING SCREEN -->
+    <div id="opening-screen" class="opening-screen">
+        <h1 class="opening-logo">NAFAY</h1>
+        <div class="loading-container">
+            <div id="loading-line" class="loading-line"></div>
+            <span id="loading-text" class="loading-text">0%</span>
+        </div>
+    </div>
+
+    <!-- MAIN WEBSITE CONTAINER -->
+    <div id="main-website" class="main-website hidden">
+        
+        <!-- HEADER / NAVIGATION -->
+        <header class="navbar">
+            <div class="nav-brand">
+                <span class="brand-title">NAFAY SERVER'S</span>
+                <span class="brand-sub">Powered by DeepX</span>
+            </div>
+            <nav class="nav-links">
+                <a href="#home" class="nav-item active" data-target="home-section">HOME</a>
+                <a href="#terms" class="nav-item" data-target="terms-section">TERMS</a>
+                <a href="#profile" class="nav-item" data-target="profile-section">PROFILE</a>
+                <a href="#events" class="nav-item" data-target="events-section">EVENTS</a>
+            </nav>
+            <div class="nav-actions">
+                <div class="streak-badge">🔥 <span id="streak-count">0</span></div>
+                <div class="lives-badge">❤️ <span id="lives-count">3</span></div>
+                <button id="settings-btn" class="settings-btn" aria-label="Settings">⚙️</button>
+            </div>
+        </header>
+
+        <!-- CONTENT SECTIONS -->
+        <main class="content-container">
+
+            <!-- HOME SECTION -->
+            <section id="home-section" class="app-section active">
+                <div class="hero-box">
+                    <h1 class="hero-title">THE ULTIMATE SERVER'S</h1>
+                    <p class="hero-subtitle">BY NAFAY</p>
+                    <div class="brand-watermark">A DeepX Project</div>
+                </div>
+
+                <!-- INFO BOXES -->
+                <div class="info-grid">
+                    <div class="info-card">
+                        <h3>3.4K</h3>
+                        <p>PEOPLE JOIN</p>
+                    </div>
+                    <div class="info-card">
+                        <h3 id="online-count">272</h3>
+                        <p>PEOPLE ONLINE</p>
+                    </div>
+                    <div class="info-card">
+                        <h3>EVENTS</h3>
+                        <p>ACTIVE HUB</p>
+                    </div>
+                    <div class="info-card">
+                        <h3>1</h3>
+                        <p>ANNIVERSARY / INDEPENDENCE DAY — 14 AUGUST</p>
+                    </div>
+                </div>
+
+                <!-- PLAY A GAME SECTION -->
+                <div class="games-hub">
+                    <h2 class="section-heading">PLAY A GAME</h2>
+                    <div class="game-modes-grid">
+                        
+                        <!-- GAME 1: CHOOSE YOUR -->
+                        <div class="game-card" data-game="choose-your">
+                            <div class="game-tag">Choice Based</div>
+                            <h3>GAME 1 — CHOOSE YOUR</h3>
+                            <p>Pick options matching your unique preference. No right or wrong answers!</p>
+                            <button class="primary-btn play-trigger" data-game="choose-your">LAUNCH GAME</button>
+                        </div>
+
+                        <!-- GAME 2: FO4R CHANCE -->
+                        <div class="game-card" data-game="fo4r-chance">
+                            <div class="game-tag">MCQ Knowledge</div>
+                            <h3>GAME 2 — FO4R CHANCE</h3>
+                            <p>Test your knowledge across Animals, Cars, Internet, and Islam categories with random answers.</p>
+                            <button class="primary-btn play-trigger" data-game="fo4r-chance">LAUNCH GAME</button>
+                        </div>
+
+                        <!-- GAME 3: YOUR LUCK -->
+                        <div class="game-card" data-game="your-luck">
+                            <div class="game-tag">Spinner Wheel</div>
+                            <h3>GAME 3 — YOUR LUCK</h3>
+                            <p>Spin the wheel to find out what the future holds for you!</p>
+                            <button class="primary-btn play-trigger" data-game="your-luck">LAUNCH GAME</button>
+                        </div>
+
+                    </div>
+                </div>
+            </section>
+
+            <!-- GAMEPLAY OVERLAY / VIEW -->
+            <section id="gameplay-section" class="app-section hidden">
+                <div class="gameplay-header">
+                    <button id="back-to-home" class="secondary-btn">← Back to Hub</button>
+                    <div class="gameplay-stats">
+                        <span>XP: <strong id="user-xp">0</strong></span>
+                        <span>Score: <strong id="user-score">0</strong></span>
+                        <span id="timer-display" class="timer-badge">⏱️ <strong id="time-left">15</strong>s</span>
+                    </div>
+                </div>
+
+                <!-- Category Selector (Only for FO4R CHANCE) -->
+                <div id="category-container" class="category-container hidden">
+                    <h3>Select Category</h3>
+                    <div class="category-grid">
+                        <button class="cat-btn" data-cat="animals">🐾 ANIMALS</button>
+                        <button class="cat-btn" data-cat="cars">🚗 CARS</button>
+                        <button class="cat-btn" data-cat="internet">🌐 INTERNET</button>
+                        <button class="cat-btn" data-cat="islam">☪️ ISLAM</button>
+                    </div>
+                </div>
+
+                <!-- Active Question Box -->
+                <div id="quiz-box" class="quiz-box hidden">
+                    <div class="progress-bar-container">
+                        <div id="quiz-progress-bar" class="progress-bar"></div>
+                    </div>
+                    <h3 id="question-text" class="question-text">Question goes here...</h3>
+                    <div id="options-grid" class="options-grid">
+                        <!-- Options generated dynamically -->
+                    </div>
+                    <div class="quiz-footer-actions">
+                        <button id="hint-btn" class="secondary-btn">💡 Use Hint (<span id="hint-count">3</span>)</button>
+                    </div>
+                </div>
+
+                <!-- Spinner Wheel Box -->
+                <div id="spinner-box" class="spinner-box hidden">
+                    <h3 id="spinner-prompt">TUM KIA BANO GA?</h3>
+                    <div class="wheel-container">
+                        <div class="wheel-pointer"></div>
+                        <div id="wheel" class="wheel">
+                            <!-- Wheel segments rendered via JS -->
+                        </div>
+                    </div>
+                    <button id="spin-btn" class="primary-btn spin-action-btn">SPIN WHEEL</button>
+                    <div id="spin-result" class="spin-result-popup hidden"></div>
+                </div>
+
+                <!-- AI Motivation Box -->
+                <div id="ai-motivation" class="ai-motivation-box">
+                    🤖 <span id="motivation-text">Welcome to Nafay Servers! Select a game mode to begin your journey.</span>
+                </div>
+            </section>
+
+            <!-- TERMS SECTION -->
+            <section id="terms-section" class="app-section hidden">
+                <div class="content-card">
+                    <h2>Terms & Conditions</h2>
+                    <p>Welcome to <strong>NAFAY SERVERS</strong>, engineered and powered by <strong>DeepX</strong>.</p>
+                    <ul>
+                        <li>All user progress, XP, badges, and rewards are saved securely in your browser storage.</li>
+                        <li>Fair play guidelines apply to all game modes and leaderboards.</li>
+                        <li>DeepX branding and assets remain protected under infrastructure guidelines.</li>
+                    </ul>
+                </div>
+            </section>
+
+            <!-- PROFILE SECTION -->
+            <section id="profile-section" class="app-section hidden">
+                <div class="content-card profile-card-view">
+                    <h2>User Profile</h2>
+                    <div id="profile-status-box" class="profile-status-unregistered">
+                        <p>No active profile found on this browser session.</p>
+                        <div class="profile-actions">
+                            <button id="create-profile-btn" class="btn-blue">MAKE A PROFILE INSTANT</button>
+                            <button id="not-now-btn" class="btn-grey">NOT NOW</button>
+                        </div>
+                    </div>
+                    <div id="profile-details-box" class="profile-details hidden">
+                        <div class="avatar-circle">DN</div>
+                        <h3>DeepX User Profile</h3>
+                        <p>Status: <span class="text-green">Active & Verified</span></p>
+                        <p>Total XP Earned: <span id="profile-xp">0</span></p>
+                        <p>Unlocked Badges: <span id="profile-badges">0</span></p>
+                        <button id="logout-profile-btn" class="secondary-btn">Reset Profile Data</button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- EVENTS SECTION -->
+            <section id="events-section" class="app-section hidden">
+                <div class="content-card">
+                    <h2>Events Hub</h2>
+                    <div class="event-banner">
+                        <h3>🎉 1st Anniversary & Independence Day</h3>
+                        <p>Date: <strong>14 August</strong></p>
+                        <p>Join special server events, exclusive rewards, and double XP multipliers throughout the celebration week!</p>
+                    </div>
+                </div>
+            </section>
+
+        </main>
+
+        <!-- SETTINGS PANEL SLIDER -->
+        <div id="settings-panel" class="settings-panel">
+            <div class="settings-header">
+                <h3>⚙️ Settings Panel</h3>
+                <button id="close-settings" class="close-settings-btn">&times;</button>
+            </div>
+            <div class="settings-body">
+                <div class="setting-group">
+                    <label>🌗 Theme Mode</label>
+                    <select id="setting-theme" class="setting-select">
+                        <option value="cream">Cream (Default)</option>
+                        <option value="night">Night Mode</option>
+                    </select>
+                </div>
+                <div class="setting-group">
+                    <label>💡 Brightness</label>
+                    <select id="setting-brightness" class="setting-select">
+                        <option value="normal">Normal</option>
+                        <option value="bright">Bright</option>
+                        <option value="dim">Dim</option>
+                    </select>
+                </div>
+                <div class="setting-group">
+                    <label>🎮 Performance Target</label>
+                    <select id="setting-fps" class="setting-select">
+                        <option value="auto">Auto (Hardware Sync)</option>
+                        <option value="1000">1000 FPS</option>
+                        <option value="800">800 FPS</option>
+                        <option value="400">400 FPS</option>
+                    </select>
+                </div>
+                <div class="setting-group-inline">
+                    <span>🔊 Sound Effects</span>
+                    <input type="checkbox" id="setting-sound" checked>
+                </div>
+                <div class="setting-group-inline">
+                    <span>🎵 Background Music</span>
+                    <input type="checkbox" id="setting-music">
+                </div>
+                <div class="setting-group-inline">
+                    <span>📳 Feedback / Vibration</span>
+                    <input type="checkbox" id="setting-vibration" checked>
+                </div>
+                <div class="setting-group-inline">
+                    <span>🔔 Notifications</span>
+                    <input type="checkbox" id="setting-notifications" checked>
+                </div>
+                <button id="reset-settings-btn" class="secondary-btn w-full">🔄 Reset Settings</button>
+            </div>
+        </div>
+        <div id="settings-overlay" class="settings-overlay hidden"></div>
+
+        <!-- FOOTER -->
+        <footer class="main-footer">
+            <p>&copy; 2026 NAFAY SERVERS. Engineered for high performance | Powered by DeepX.</p>
+        </footer>
+
+    </div>
+
+    <!-- SCRIPTS -->
+    <script src="questions.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
